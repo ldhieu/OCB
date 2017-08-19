@@ -22,7 +22,7 @@
 <t t-name="CrashManager.warning">
     <div class="o_dialog_warning">
         <t t-js="d">
-            var message = d.message ? d.message : d.error.data.message;
+            var message = (d.message !== undefined) ? d.message : d.error.data.message;
             d.html_error = context.engine.tools.html_escape(message).replace(/\n/g, '<br/>');
         </t>
         <t t-raw="html_error"/>
@@ -822,7 +822,8 @@
     </div>
 </t>
 <t t-name="FieldBinaryImage-img">
-    <img t-att-src='url'
+    <img class="img img-responsive"
+        t-att-src='url'
         t-att-border="widget.readonly ? 0 : 1"
         t-att-name="widget.name"
         t-att-width="widget.node.attrs.img_width || widget.node.attrs.width"
